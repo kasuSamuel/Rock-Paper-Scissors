@@ -1,0 +1,435 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(134.34% 134.34% at 50% 0%, #1F3757 0%, #131537 100%);
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative; 
+}
+
+header {
+    margin-top: 3rem;
+    width: 60%;
+    height: 9.375rem;
+    border-radius: 0.9375rem;
+    border: 3px solid rgba(255, 255, 255, 0.29);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+header img {
+    height: 8rem;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 9.375rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(0deg, #F3F3F3 0%, #FFF 100%);
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.20);
+}
+
+.score h1 {
+    color: #2A45C2;
+    font-size: 2rem;
+    font-weight: 500; 
+}
+
+.score span {
+    color: #565468;
+    font-size: 4rem;
+    font-weight: 900;
+}
+
+section {
+    margin-top: 1rem;
+    width: 50%;
+    height: 26.875rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('./images/bg-triangle.svg') center/cover no-repeat;
+    background-size: 25rem 17rem;
+    position: relative;
+    z-index: 0;
+}
+
+.outta {
+    width: 10rem;
+    height: 10rem;
+    background: #fff;
+    border-radius: 50%;
+    place-items: center;
+    box-shadow: inset 0 0.5rem #00000026;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+.outta::before,
+.outta::after {
+    content: '';
+    position: absolute;
+    width: 130%;
+    height: 130%;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.outta:hover::after{
+    box-shadow:0 0 0 30px rgba(253, 253, 253, 0.05);  
+}
+
+.outta img {
+    transform: scale(1.2);
+}
+
+.paper {
+    bottom: 14rem;
+    left: 8.5rem;
+}
+
+.paper::before {
+    background: linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+    box-shadow: 0 0.5rem #0000004d, 0 0.5rem hsl(230, 89%, 65%);
+}
+
+.scissors {
+    bottom: 14rem;
+    right: 8.5rem;
+}
+.scissors::before {
+    background: linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+    box-shadow: 0 0.5rem #0000004d, 0 0.5rem hsl(40, 84%, 53%);
+}
+
+.rock {
+    bottom: 0;
+    left: 19rem;
+}
+
+.rock::before {
+    background: linear-gradient(to bottom, hsl(349, 70%, 56%), hsl(349, 70%, 56%));
+    box-shadow: 0 0.5rem #0000004d, 0 0.5rem hsl(349, 70%, 56%);
+}
+
+button {
+    width: 8rem;
+    height: 2.5rem;
+    color: #FFF;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.15625rem;
+    background: inherit;
+    border-radius: 0.5rem;
+    border: 1px solid #FFF;
+    cursor: pointer;
+    position: absolute;
+    top: 90%;
+    right: 6rem;
+}
+
+button:hover {
+    color: #3B4262;
+    background: linear-gradient(0deg, #F3F3F3 0%, #FFF 100%);
+}
+
+
+.rule {
+    width: 27rem;
+    height: 25rem;
+    color: #3B4262;
+    border-radius: 0.5rem;
+    background: #FFF;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.20);
+    background-image: url(/images/rules.svg);
+    background-size: 15rem;
+    background-repeat: no-repeat;
+    background-position: 50% 70%;
+    display: flex;
+    justify-content: space-between;
+    padding: 3.5rem 2rem;
+    position: absolute;
+    top: 47%;
+    left: 49.7%;
+    transform: translate(-50%, -50%);
+}
+
+.rule h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2rem;
+}
+
+.rule img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.rule button {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    position: absolute;
+    top: 3.5rem;
+    right: 0;
+}
+
+.top-rule {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.502);
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.anything {
+    visibility: visible;
+}
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    height: 50%;
+    margin: 10rem auto;
+    position: relative;
+    bottom: 41rem;
+}
+
+.selector p,
+.the-house p {
+    color: #FFF;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.20);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2rem;
+    letter-spacing: 0.1875rem;
+}
+
+.again a {
+    width: 12rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(0deg, #F3F3F3 0%, #FFF 100%);
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.20);
+    cursor: pointer;
+    color: #3B4262;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.15625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.again a:hover {
+    color: #DB2E4D;
+}
+
+.again {
+    display: flex;
+    width: 20.75rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    margin-left: 2.5rem;
+
+}
+
+.again p {
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.20);
+    font-size: 3.5rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+
+}
+
+.winner::before {
+    border-radius: 50%;
+  box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.027), 0 0 0 100px rgba(255, 255, 255, 0.027), 0 0 0 150px rgba(255, 255, 255, 0.023);
+}
+
+.house{
+left: 78%;    
+top: 7rem;
+    width: 12rem;
+    height: 12rem;
+  }
+  
+  .its {
+      top: 7rem;
+      left: 0;
+      width: 12rem;
+      height: 12rem;
+    }
+
+
+    @media (min-width: 320px) and (max-width: 430px) {
+
+       header{
+        margin-top: 1rem;
+        width: 19.4375rem;
+        height: 6rem;
+        align-items: center;
+    }
+
+    header img{
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .score{
+        width: 5rem;
+        height: 4.5rem;
+    }
+    
+    .score h1{
+    font-size: 0.625rem;
+    font-weight: 600;
+    padding: 0;
+    letter-spacing: 0.09769rem;
+    text-align: center;
+    }
+    
+    .score span{
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 2.5rem; 
+    }
+
+    button {
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+    }
+    .rule {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        background-position: 50%;    
+    }
+    
+    .rule button{
+        top: 90%;
+    }
+
+    section{
+        width: 95vw;
+        height: 60vh;
+        justify-content: center;
+        align-items: center;
+        background-size: 13rem 15rem;
+    }
+    
+    .outta{
+        width: 7rem;
+        height: 7rem;
+    }
+    
+    .outta img {
+        transform: scale(1);
+    }
+    
+    .paper{
+        position: absolute;
+top: 3rem;
+left: 2rem;
+    }
+    
+    .scissors{
+        position: absolute;
+        top: 3rem;
+        right: 2rem;
+    }
+    
+    .rock{
+        position: absolute;
+top: 55%;
+left: 36%;
+    }
+    
+    .image-container {
+        width: 95vw;
+       height: 65vh;
+       position: absolute;
+       margin-left: 2.5vw;
+       top: 0;
+    }
+    
+    .selector,
+    .the-house{
+        position: absolute;
+        width: 10rem;
+        height: 17rem;
+        display: flex;
+        flex-direction: column;
+        
+       }
+
+       .selector{
+        left: 0;
+    }
+
+    .the-house{
+        right: 0;
+    }
+    
+    .house{
+        top: 5rem;
+        left: 1rem;
+    }
+    
+    .its{
+        top: 5rem;
+        left: 2rem;
+    }
+    
+    .selector p,
+    .the-house p {
+        font-size: 0.73rem;
+        letter-spacing: 0.1rem;
+    }
+    
+    .selector p{
+        text-align: center;
+        margin-left: 0;
+    }
+    
+       .again{
+        width: 100%;
+        position: absolute;
+        top: 10rem;
+        margin-left: 0;
+    }
+    
+        .winner::before{
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.027), 0 0 0 30px rgba(255, 255, 255, 0.027), 0 0 0 50px rgba(255, 255, 255, 0.023);
+        }
+        
+        
+        
+        }
