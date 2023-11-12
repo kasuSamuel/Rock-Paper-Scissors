@@ -60,16 +60,20 @@ header img {
 }
 
 section {
-    margin-top: 1rem;
-    width: 50%;
     height: 26.875rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url('./images/bg-triangle.svg') center/cover no-repeat;
-    background-size: 25rem 17rem;
     position: relative;
-    z-index: 0;
+}
+
+section::before{
+    background: url('./images/bg-triangle.svg')no-repeat;
+    background-size: 25rem 17rem;
+    content: '';
+    position: absolute;
+    top: 25vh;
+    left: -12rem;
+    height: 17rem;
+    width: 25rem;
+    z-index: -1;
 }
 
 .outta {
@@ -104,8 +108,8 @@ section {
 }
 
 .paper {
-    bottom: 14rem;
-    left: 8.5rem;
+    bottom: 11rem;
+    left: 5rem;
 }
 
 .paper::before {
@@ -114,8 +118,8 @@ section {
 }
 
 .scissors {
-    bottom: 14rem;
-    right: 8.5rem;
+    bottom: 11rem;
+    right: 5rem;
 }
 
 .scissors::before {
@@ -124,8 +128,8 @@ section {
 }
 
 .rock {
-    bottom: 0;
-    left: 19rem;
+    top: 22rem;
+    left: -5rem;
 }
 
 .rock::before {
@@ -146,8 +150,8 @@ button {
     border: 1px solid #FFF;
     cursor: pointer;
     position: absolute;
-    top: 82%;
-    right: 6rem;
+    top: 82vh;
+    right: 6vw;
 }
 
 button:hover {
@@ -210,14 +214,26 @@ button:hover {
 }
 
 .image-container {
+    width: 70vw;
+    height: 50vh;
     display: flex;
     justify-content: space-between;
-    width: 70%;
-    height: 50%;
-    margin: 10rem auto;
+    align-items: center;
     position: relative;
-    bottom: 41rem;
+    left: 15vw;
+    bottom: 34rem;
 }
+
+.selector, .the-house{
+    position: relative;
+    width: 30%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
 
 .selector p,
 .the-house p {
@@ -250,14 +266,11 @@ button:hover {
 }
 
 .again {
-    display: flex;
     width: 20.75rem;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 5rem;
-    margin-left: 2.5rem;
-
 }
 
 .again p {
@@ -274,19 +287,16 @@ button:hover {
     box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.027), 0 0 0 100px rgba(255, 255, 255, 0.027), 0 0 0 150px rgba(255, 255, 255, 0.023);
 }
 
-.house {
-    left: 78%;
-    top: 7rem;
+.house, .its  {
+    position: relative;
+    
     width: 12rem;
     height: 12rem;
-}
+    top: 5rem;
+  left: 4vw;
+ }
 
-.its {
-    top: 7rem;
-    left: 0;
-    width: 12rem;
-    height: 12rem;
-}
+
 
 @media (min-width: 320px) and (max-width: 430px) {
 
