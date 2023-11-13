@@ -1,6 +1,7 @@
 const showRule = document.getElementById('showRule');
 const topRule = document.querySelector('.top-rule');
 const section = document.getElementById('section-content');
+const bonus = document.getElementById('bns');
 
 showRule.addEventListener('click', toggleRulePopup);
 
@@ -14,7 +15,7 @@ function toggleRulePopup() {
   topRule.innerHTML = ruleContent;
   topRule.classList.toggle('anything');
 
-  const closeBtn = document.getElementById('close'); 
+  const closeBtn = document.getElementById('close');
   closeBtn.addEventListener('click', toggleRulePopup);
 }
 
@@ -40,14 +41,14 @@ function determineResult(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
     return "TIE";
   } else if (
-    (userChoice === 'rock' && computerChoice === 'scissors')||
-    (userChoice === 'scissors' && computerChoice === 'paper')||
+    (userChoice === 'rock' && computerChoice === 'scissors') ||
+    (userChoice === 'scissors' && computerChoice === 'paper') ||
     (userChoice === 'paper' && computerChoice === 'rock')
   ) {
     incrementScore(1);
     return "YOU WIN";
   } else {
-    if(score > 0){
+    if (score > 0) {
       incrementScore(-1);
     }
     return "YOU LOSE";
@@ -65,9 +66,9 @@ function incrementScore(point) {
 const imgClicks = document.querySelectorAll('.outta');
 const computerChoices = ['rock', 'paper', 'scissors'];
 const computerImages = {
-          rock: './images/icon-rock.svg',
-          paper: './images/icon-paper.svg',
-          scissors: './images/icon-scissors.svg',
+  rock: './images/icon-rock.svg',
+  paper: './images/icon-paper.svg',
+  scissors: './images/icon-scissors.svg',
 };
 
 imgClicks.forEach(imgClick => {
@@ -110,7 +111,64 @@ imgClicks.forEach(imgClick => {
     const playAgainLink = resultContainer.querySelector('#play-again');
     playAgainLink.addEventListener('click', () => {
       resultContainer.style.display = 'none';
-      section.style.display = 'grid';
+      section.style.display = 'flex';
     });
   });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  bonus.addEventListener('click', () => {
+    const main = document.querySelector('main');
+    const body = document.querySelector('body');
+    main.style.display = 'none';
+
+    function bxtGame() {
+      const bonusGame = `
+        
+          <main>
+  <header>
+      <img src="./images/logo-bonus.svg" alt="logo">
+      <div class="score">
+          <h1>SCORE</h1>
+          <span class="score-board">0</span>   
+      </div>
+  </header>
+
+  <section id="section-two"> 
+          <div class="outta lizard">
+        <img src="./images/icon-lizard.svg" alt="lizard" >
+      </div>
+
+      <div class="outta spock">
+        <img src="./images/icon-spock.svg" alt="spock" >
+      </div>
+
+      <div class="outta rock">
+        <img src="./images/icon-rock.svg" alt="rock" >
+      </div>
+
+      <div class="outta paper">
+        <img src="./images/icon-paper.svg" alt="paper" >
+      </div>
+
+      <div class="outta scissors">
+        <img  src="./images/icon-scissors.svg" alt="scissors">
+      </div>
+  </section>
+
+  <div class="top-rule"> <!-- js --> </div>
+  <div class="button-for">
+<button id="bns">PRIMARY</button>
+  <button id="showRule">RULES</button>
+</div>
+</main>
+        `
+        body.innerHTML = bonusGame;
+    }
+    bxtGame();
+    
+  });
+
 });

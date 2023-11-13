@@ -59,13 +59,26 @@ header img {
     font-weight: 900;
 }
 
-section {
+#section-content,
+#section-two {
     height: 26.875rem;
     position: relative;
 }
 
-section::before{
+#section-content::before {
     background: url('./images/bg-triangle.svg')no-repeat;
+    background-size: 25rem 17rem;
+    content: '';
+    position: absolute;
+    top: 25vh;
+    left: -12rem;
+    height: 17rem;
+    width: 25rem;
+    z-index: -1;
+}
+
+#section-two::before {
+    background: url('./images/bg-pentagon.svg')no-repeat;
     background-size: 25rem 17rem;
     content: '';
     position: absolute;
@@ -108,7 +121,7 @@ section::before{
 }
 
 .paper {
-    bottom: 11rem;
+    bottom: 10rem;
     left: 5rem;
 }
 
@@ -118,7 +131,7 @@ section::before{
 }
 
 .scissors {
-    bottom: 11rem;
+    bottom: 10rem;
     right: 5rem;
 }
 
@@ -137,6 +150,38 @@ section::before{
     box-shadow: 0 0.5rem #0000004d, 0 0.5rem hsl(349, 70%, 56%);
 }
 
+.lizard {
+    bottom: 0;
+    left: 2rem;
+}
+
+.lizard::before {
+    background: linear-gradient(to bottom, rgba(131, 78, 227, 1), rgba(95, 55, 168, 1));
+    box-shadow: 0 0.5rem #0000004d, 0 0.5rem rgba(95, 55, 168, 1);
+}
+
+.spock {
+    bottom: 0;
+    left: 12rem;
+}
+
+.spock::before {
+    background: linear-gradient(to bottom, rgba(63, 183, 205, 1), rgba(45, 141, 171, 1));
+    box-shadow: 0 0.5rem #0000004d, 0 0.5rem rgba(45, 141, 171, 1);
+}
+
+
+.button-for {
+    width: 8rem;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 82vh;
+    right: 6vw;
+}
+
 button {
     width: 8rem;
     height: 2.5rem;
@@ -149,15 +194,13 @@ button {
     border-radius: 0.5rem;
     border: 1px solid #FFF;
     cursor: pointer;
-    position: absolute;
-    top: 82vh;
-    right: 6vw;
 }
 
 button:hover {
     color: #3B4262;
     background: linear-gradient(0deg, #F3F3F3 0%, #FFF 100%);
 }
+
 
 .rule {
     width: 27rem;
@@ -178,6 +221,8 @@ button:hover {
     left: 49.7%;
     transform: translate(-50%, -50%);
 }
+
+
 
 .rule h1 {
     font-size: 2rem;
@@ -224,7 +269,8 @@ button:hover {
     bottom: 34rem;
 }
 
-.selector, .the-house{
+.selector,
+.the-house {
     position: relative;
     width: 30%;
     height: 80%;
@@ -287,18 +333,23 @@ button:hover {
     box-shadow: 0 0 0 50px rgba(255, 255, 255, 0.027), 0 0 0 100px rgba(255, 255, 255, 0.027), 0 0 0 150px rgba(255, 255, 255, 0.023);
 }
 
-.house, .its  {
+.house,
+.its {
     position: relative;
-    
+
     width: 12rem;
     height: 12rem;
     top: 5rem;
-  left: 4vw;
- }
+    left: 4vw;
+}
 
 
 
 @media (min-width: 320px) and (max-width: 430px) {
+
+    main {
+        justify-content: space-between;
+    }
 
     header {
         margin-top: 1rem;
@@ -331,7 +382,11 @@ button:hover {
         line-height: 2.5rem;
     }
 
-    button {
+    .button-for {
+        width: 80vw;
+        height: 2.5rem;
+        flex-direction: row;
+        top: 90%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
@@ -345,14 +400,25 @@ button:hover {
 
     .rule button {
         top: 90%;
+        transform: translate(-50%, -50%);
+        left: 50%;
     }
 
-    section {
-        width: 95vw;
-        height: 60vh;
-        justify-content: center;
+    .winner::before {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.027), 0 0 0 30px rgba(255, 255, 255, 0.027), 0 0 0 50px rgba(255, 255, 255, 0.023);
+    }
+  
+
+    #section-content::before {
+        background-size: 10.375rem 11.75rem;
+        content: '';
+        top: -2rem;
+        left: -5rem;
+        width: 40vw;
+        height: 30vh;
         align-items: center;
-        background-size: 13rem 15rem;
+        justify-content: center;
+        z-index: -1;
     }
 
     .outta {
@@ -360,83 +426,81 @@ button:hover {
         height: 7rem;
     }
 
-    .outta img {
-        transform: scale(1);
-    }
+        .outta img {
+            transform: scale(1);
+        }
+    
+        .paper {
+            position: absolute;
+            top: -4rem;
+            left: 2rem;
+        }
+    
+        .scissors {
+            position: absolute;
+            top: -4rem;
+            right: 2rem;
+        }
+    
+        .rock {
+            position: absolute;
+            top: 23%;
+            left: -3.5rem;
+        }
+    
+        .image-container {
+            width: 95vw;
+            height: 65vh;
+            position: relative;
+            margin-left: 2.5vw;
+            left: 0;
+            top: -80vh;
+        }
+    
+        .selector,
+        .the-house {
+            position: absolute;
+            width: 10rem;
+            height: 17rem;
+            display: flex;
+            flex-direction: column;
+            top: 1rem;
+        }
+    
+        .selector {
+            left: 0;
+        }
+    
+        .the-house {
+            right: 0;
+        }
+    
+        .house {
+            top: 5rem;
+            left: 1rem;
+        }
+    
+        .its {
+            top: 5rem;
+            left: 2rem;
+        }
+    
+        .selector p,
+        .the-house p {
+            font-size: 0.73rem;
+            letter-spacing: 0.1rem;
+        }
+    
+        .selector p {
+            text-align: center;
+            margin-left: 0;
+        }
+    
+        .again {
+            width: 100%;
+            position: absolute;
+            top: 60%;
+            margin-left: 0;
+        }
 
-    .paper {
-        position: absolute;
-        top: 3rem;
-        left: 2rem;
-    }
-
-    .scissors {
-        position: absolute;
-        top: 3rem;
-        right: 2rem;
-    }
-
-    .rock {
-        position: absolute;
-        top: 55%;
-        left: 36%;
-    }
-
-    .image-container {
-        width: 95vw;
-        height: 65vh;
-        position: absolute;
-        margin-left: 2.5vw;
-        top: 0;
-    }
-
-    .selector,
-    .the-house {
-        position: absolute;
-        width: 10rem;
-        height: 17rem;
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .selector {
-        left: 0;
-    }
-
-    .the-house {
-        right: 0;
-    }
-
-    .house {
-        top: 5rem;
-        left: 1rem;
-    }
-
-    .its {
-        top: 5rem;
-        left: 2rem;
-    }
-
-    .selector p,
-    .the-house p {
-        font-size: 0.73rem;
-        letter-spacing: 0.1rem;
-    }
-
-    .selector p {
-        text-align: center;
-        margin-left: 0;
-    }
-
-    .again {
-        width: 100%;
-        position: absolute;
-        top: 10rem;
-        margin-left: 0;
-    }
-
-    .winner::before {
-        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.027), 0 0 0 30px rgba(255, 255, 255, 0.027), 0 0 0 50px rgba(255, 255, 255, 0.023);
-    }
 }
